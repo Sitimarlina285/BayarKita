@@ -1,0 +1,391 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F8FAFC;
+    transition:.3s;
+}
+
+.hidden{
+    display:none;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card i{
+
+    font-size:45px;
+
+    display:block;
+
+    margin-bottom:20px;
+
+    color:#0F766E;
+
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.nav-link{
+
+    transition:.3s;
+
+}
+
+.nav-link:hover{
+
+    color:#0F766E;
+
+}
+
+/* ===========================
+   DASHBOARD
+=========================== */
+
+.dashboard-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.icon-dashboard{
+
+    font-size:45px;
+
+    color:#0F766E;
+
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal-show{
+
+    display:flex;
+
+    animation:fade .3s;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* =======================================================
+                    DARK MODE
+======================================================= */
+
+body.dark{
+
+    background:#111827;
+
+    color:white;
+
+}
+
+/* Navbar */
+
+body.dark nav{
+
+    background:#1f2937 !important;
+
+}
+
+/* Semua card */
+
+body.dark .card{
+
+    background:#1f2937;
+
+    color:white;
+
+    border:1px solid #374151;
+
+}
+
+body.dark .card:hover{
+
+    background:#273449;
+
+}
+
+/* Dashboard Card */
+
+body.dark .dashboard-card{
+
+    background:#1f2937;
+
+    color:white;
+
+}
+
+/* Semua background putih */
+
+body.dark .bg-white{
+
+    background:#1f2937 !important;
+
+    color:white;
+
+}
+
+/* Input */
+
+body.dark input,
+body.dark select,
+body.dark textarea{
+
+    background:#374151;
+
+    color:white;
+
+    border:1px solid #4b5563;
+
+}
+
+body.dark input::placeholder{
+
+    color:#d1d5db;
+
+}
+
+/* Table */
+
+body.dark table,
+body.dark th,
+body.dark td{
+
+    color:white;
+
+}
+
+/* Modal */
+
+body.dark #paymentContent,
+body.dark #receiptContent{
+
+    background:#1f2937;
+
+    color:white;
+
+}
+
+/* Button abu */
+
+body.dark .bg-gray-100{
+
+    background:#374151 !important;
+
+}
+
+body.dark .bg-gray-200{
+
+    background:#4b5563 !important;
+
+}
+
+body.dark .bg-gray-300{
+
+    background:#6b7280 !important;
+
+    color:white;
+
+}
+
+/* Semua Heading */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6{
+
+    color:white !important;
+
+}
+
+/* Semua Paragraf */
+
+body.dark p{
+
+    color:#d1d5db !important;
+
+}
+
+/* Label */
+
+body.dark label{
+
+    color:white !important;
+
+}
+
+/* Span */
+
+body.dark span{
+
+    color:#d1d5db !important;
+
+}
+
+/* Warna Tailwind */
+
+body.dark .text-black{
+
+    color:white !important;
+
+}
+
+body.dark .text-gray-400{
+
+    color:#d1d5db !important;
+
+}
+
+body.dark .text-gray-500{
+
+    color:#d1d5db !important;
+
+}
+
+body.dark .text-gray-600{
+
+    color:#e5e7eb !important;
+
+}
+
+body.dark .text-gray-700{
+
+    color:#f3f4f6 !important;
+
+}
+
+/* Jika memakai slate */
+
+body.dark .text-slate-400{
+
+    color:#d1d5db !important;
+
+}
+
+body.dark .text-slate-500{
+
+    color:#d1d5db !important;
+
+}
+
+body.dark .text-slate-600{
+
+    color:#e5e7eb !important;
+
+}
+
+/* Jika memakai neutral */
+
+body.dark .text-neutral-400{
+
+    color:#d1d5db !important;
+
+}
+
+body.dark .text-neutral-500{
+
+    color:#d1d5db !important;
+
+}
+
+/* Primary */
+
+body.dark .text-primary{
+
+    color:#2dd4bf !important;
+
+}
+
+/* Link */
+
+body.dark .nav-link{
+
+    color:#f3f4f6;
+
+}
+
+body.dark .nav-link:hover{
+
+    color:#2dd4bf;
+
+}
+
+body.dark .nav-link.text-primary{
+
+    color:#2dd4bf !important;
+
+}

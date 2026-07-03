@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BayarKita</title>
+
+    <!-- Tailwind -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Chart -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- QRCode -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- jsPDF -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+          <script>
+
+tailwind.config = {
+
+theme:{
+
+extend:{
+
+colors:{
+
+primary:"#0F766E",
+
+secondary:"#14B8A6",
+
+accent:"#06B6D4",
+
+light:"#F8FAFC"
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
+</head>
+
+<body class="bg-light">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+
+        <div class="max-w-7xl mx-auto px-8">
+
+            <div class="flex justify-between items-center h-20">
+
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+
+                    <i class="fa-solid fa-wallet text-3xl text-primary"></i>
+
+                    <h1 class="text-3xl font-bold text-primary">
+                        BayarKita
+                    </h1>
+
+                </div>
+
+                <!-- Menu -->
+                <div class="flex gap-8 text-gray-700 font-medium">
+
+                    <a href="#" class="nav-link text-primary" data-page="dashboard">
+                        Dashboard
+                    </a>
+
+                    <a href="#" class="nav-link" data-page="bill">
+                        Bayar Tagihan
+                    </a>
+
+                    <a href="#" class="nav-link" data-page="spp">
+                        SPP
+                    </a>
+
+                    <a href="#" class="nav-link" data-page="pulsa">
+                        Pulsa
+                    </a>
+
+                    <a href="#" class="nav-link" data-page="history">
+                        Riwayat
+                    </a>
+
+                </div>
+
+               
+                <button
+                    id="themeToggle"
+                    class="bg-white text-primary px-4 py-2 rounded-xl shadow">
+
+                    🌙 Dark Mode
+
+                </button>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard-page" class="page">
+
+        <!-- Hero -->
+
+        <section class="max-w-7xl mx-auto mt-8">
+
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-3xl p-12 text-white">
+
+                <h2 class="text-5xl font-bold">
+                    Bayar Semua Tagihan
+                </h2>
+
+                <p class="mt-4 text-xl">
+                    Lebih Cepat • Aman • Praktis
+                </p>
+
+
+            </div>
+
+        </section>
+
+        <!-- Dashboard Card -->
+<section class="max-w-7xl mx-auto mt-10">
+
+    <div class="grid grid-cols-3 gap-6">
+
+        <!-- Saldo -->
+        <div class="dashboard-card">
+
+            <div>
+
+                <p class="text-gray-500">Saldo</p>
+
+                <h2 id="saldoValue" class="text-3xl font-bold mt-2">
+
+                    Rp0
+
+                </h2>
+                <button
+            id="topupBtn"
+            class="text-primary font-semibold">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Top Up
+
+        </button>
+
+            </div>
+
+            <i class="fa-solid fa-wallet icon-dashboard"></i>
+
+        </div>
+
+        <!-- Transaksi -->
+        <div class="dashboard-card">
+
+            <div>
+
+                <p class="text-gray-500">Transaksi</p>
+
+                <h2 id="transaksiValue" class="text-3xl font-bold mt-2">
+
+                    0
+
+                </h2>
+
+            </div>
+
+            <i class="fa-solid fa-receipt icon-dashboard"></i>
+
+        </div>
+
+        <!-- Pengeluaran -->
+        <div class="dashboard-card">
+
+            <div>
+
+                <p class="text-gray-500">Pengeluaran</p>
+
+                <h2 id="pengeluaranValue" class="text-3xl font-bold mt-2">
+
+                    Rp0
+
+                </h2>
+
+            </div>
+
+            <i class="fa-solid fa-file-invoice-dollar icon-dashboard"></i>
+
+        </div>
+
+    </div>
+
+</section>
+       
+        <!-- Quick Menu -->
+
+        <section class="max-w-7xl mx-auto mt-10">
+
+           <div class="grid grid-cols-3 gap-8">
+
+    <div class="card quick-link" data-page="bill">
+
+        <i class="fa-solid fa-file-invoice-dollar text-5xl text-primary mb-5"></i>
+
+        <h3 class="text-2xl font-bold">
+           &nbsp; Tagihan
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            PLN • PDAM • Internet • Seminar
+        </p>
+
+    </div>
+
+    <div class="card quick-link" data-page="spp">
+
+        <i class="fa-solid fa-graduation-cap text-5xl text-primary mb-5"></i>
+
+        <h3 class="text-2xl font-bold">
+            SPP
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Pembayaran Kuliah
+        </p>
+
+    </div>
+
+    <div class="card quick-link" data-page="pulsa">
+
+        <i class="fa-solid fa-mobile-screen text-5xl text-primary mb-5"></i>
+
+        <h3 class="text-2xl font-bold">
+            Pulsa & Paket
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Semua Provider
+        </p>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+        <!-- Grafik Pengeluaran -->
+
+        <section class="max-w-7xl mx-auto mt-10">
+
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+
+        <h2 class="text-2xl font-bold mb-6">
+            &nbsp;Statistik Metode Pembayaran
+        </h2>
+
+        <div class="w-72 h-72 mx-auto">
+
+            <canvas id="paymentChart"></canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </section>
+
+    <!-- ================= BILL ================= -->
+
+   <!-- ================= BILL ================= -->
+
+<section id="bill-page" class="page hidden">
+
+
+    <!-- Form -->
+
+    <div class="max-w-7xl mx-auto mt-8">
+
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+
+            <h2 class="text-3xl font-bold text-primary mb-8">
+
+                Detail Tagihan
+
+            </h2>
+
+            <div class="grid grid-cols-2 gap-10">
+
+                <!-- FORM -->
+
+                <div>
+
+                    <label class="font-semibold">
+
+                        Jenis Tagihan
+
+                    </label>
+
+                    <select
+                        id="billType"
+                        class="w-full border rounded-xl p-3 mt-2">
+
+                        <option value="pln">PLN</option>
+
+                        <option value="pdam">PDAM</option>
+
+                        <option value="internet">Internet</option>
+
+                        <option value="seminar">Seminar</option>
+
+                    </select>
+
+                    <label class="font-semibold mt-6 block">
+
+                        Nomor Pelanggan
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerNumber"
+                        class="w-full border rounded-xl p-3 mt-2"
+                        placeholder="Masukkan Nomor Pelanggan">
+
+                    <button
+                        id="checkBillBtn"
+                        class="w-full bg-primary text-white py-3 rounded-xl mt-6 hover:opacity-90 transition">
+
+                        Cek Tagihan
+
+                    </button>
+
+                </div>
+
+                <!-- HASIL -->
+
+                <div>
+
+                    <div
+                        id="billResult"
+                        class="bg-gray-50 rounded-2xl p-6 min-h-[300px] flex items-center justify-center">
+
+                        <div class="text-center text-gray-400">
+
+                            <i class="fa-solid fa-file-invoice-dollar text-6xl mb-4"></i>
+
+                            <p>
+
+                                Silakan cek tagihan terlebih dahulu.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ================= SPP ================= -->
+
+<section id="spp-page" class="page hidden">
+
+    <div class="max-w-7xl mx-auto py-10">
+
+        <h1 class="text-4xl font-bold text-primary mb-8">
+
+           &nbsp; Pembayaran SPP
+
+        </h1>
+
+        <div class="grid grid-cols-2 gap-8">
+
+            <!-- FORM -->
+
+            <div class="bg-white rounded-3xl shadow-lg p-8">
+
+                <h2 class="text-2xl font-bold mb-6">
+
+                    Cari Tagihan Mahasiswa
+
+                </h2>
+
+                <label class="font-semibold">
+
+                    Nomor Induk Mahasiswa (NIM)
+
+                </label>
+
+                <input
+                    id="nimInput"
+                    type="text"
+                    class="w-full border rounded-xl p-3 mt-2"
+                    placeholder="Masukkan NIM">
+
+                <button
+                    id="searchSPP"
+                    class="w-full bg-primary text-white py-3 rounded-xl mt-6">
+
+                    Lihat Tagihan Semester
+
+                </button>
+
+            </div>
+
+            <!-- HASIL -->
+
+            <div
+                id="sppResult"
+                class="bg-white rounded-3xl shadow-lg p-8">
+
+                <div class="text-center text-gray-400 mt-20">
+
+                    Masukkan NIM terlebih dahulu.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ================= PULSA ================= -->
+
+<section id="pulsa-page" class="page hidden">
+
+    <div class="max-w-7xl mx-auto py-10">
+
+        <h1 class="text-4xl font-bold text-primary mb-8">
+
+          &nbsp;  Isi Pulsa & Paket Data
+
+        </h1>
+
+        <div class="grid grid-cols-2 gap-8">
+
+            <!-- FORM -->
+
+            <div class="bg-white rounded-3xl shadow-lg p-8">
+
+                <label class="font-semibold">
+
+                    Provider
+
+                </label>
+
+                <select
+                    id="provider"
+                    class="w-full border rounded-xl p-3 mt-2">
+
+                    <option>Telkomsel</option>
+                    <option>XL Axiata</option>
+                    <option>Indosat</option>
+                    <option>Tri</option>
+                    <option>Axis</option>
+                    <option>Smartfren</option>
+
+                </select>
+
+                <label class="font-semibold mt-6 block">
+
+                    Nomor HP
+
+                </label>
+
+                <input
+                    id="phoneNumber"
+                    class="w-full border rounded-xl p-3 mt-2"
+                    placeholder="08xxxxxxxxxx">
+
+                <label class="font-semibold mt-6 block">
+
+                    Nominal Pulsa
+
+                </label>
+
+                <select
+                    id="pulsaAmount"
+                    class="w-full border rounded-xl p-3 mt-2">
+
+                    <option value="10000">Rp10.000</option>
+                    <option value="25000">Rp25.000</option>
+                    <option value="50000">Rp50.000</option>
+                    <option value="100000">Rp100.000</option>
+                    <option value="200000">Rp200.000</option>
+
+                </select>
+
+                <button
+                    id="previewPulsa"
+                    class="w-full bg-primary text-white py-3 rounded-xl mt-8">
+
+                    Lanjutkan
+
+                </button>
+
+            </div>
+
+            <!-- PREVIEW -->
+
+            <div
+                id="pulsaResult"
+                class="bg-white rounded-3xl shadow-lg p-8">
+
+                <div class="text-center text-gray-400 mt-20">
+
+                    Preview transaksi akan muncul di sini.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ================= HISTORY ================= -->
+
+<section id="history-page" class="page hidden">
+
+    <div class="max-w-7xl mx-auto py-10">
+
+        <div class="flex justify-between items-center mb-8">
+
+            <h1 class="text-4xl font-bold text-primary">
+
+             &nbsp;   Riwayat Transaksi
+
+            </h1>
+
+            <button
+                id="clearHistory"
+                class="border border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-6 py-3 rounded-xl transition"
+
+                <i class="fa-solid fa-trash me-2"></i>
+
+                Hapus Riwayat &nbsp;&nbsp;&nbsp;
+
+            </button>
+
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+
+            <table class="w-full">
+
+                <thead>
+
+                    <tr class="border-b">
+
+                        <th class="text-left py-4">Tanggal</th>
+                        <th class="text-left">Kategori</th>
+                        <th class="text-left">Metode</th>
+                        <th class="text-left">Nama</th>
+                        <th class="text-left">Nominal</th>
+                        <th class="text-left">Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= PAYMENT MODAL ================= -->
+
+<div id="paymentModal"
+    class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+
+    <div class="bg-white rounded-3xl shadow-2xl w-[600px] p-8 relative">
+
+        <button
+            id="closeModal"
+            class="absolute right-6 top-4 text-2xl">
+
+            ×
+
+        </button>
+
+        <div id="paymentContent">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= RECEIPT MODAL ================= -->
+
+<div
+    id="receiptModal"
+    class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+
+    <div
+        id="receiptContent"
+        class="bg-white rounded-3xl w-[600px] p-8">
+
+    </div>
+
+</div>
+
+
+    <!-- JS -->
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/history.js"></script>
+<script src="js/spp.js"></script>
+<script src="js/pulsa.js"></script>
+<script src="js/receipt.js"></script>
+<script src="js/bill.js"></script>
+<script src="js/app.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>
