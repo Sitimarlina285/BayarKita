@@ -28,7 +28,7 @@ function searchSPP() {
 
     }
 
-    const mahasiswa = sppData[nim];
+    const mahasiswa = getSPPData()[nim];
 
     if (!mahasiswa) {
 
@@ -98,12 +98,27 @@ function renderSPP(mahasiswa){
 
             <td>
 
-                <input
-                    class="billCheck"
+                ${
+item.status === "Lunas"
 
-                    data-amount="${item.amount}"
+?
 
-                    type="checkbox">
+`<span class="text-green-600 font-bold">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Lunas
+
+</span>`
+
+:
+
+`<input
+class="billCheck"
+data-amount="${item.amount}"
+type="checkbox">`
+
+}
 
             </td>
 
@@ -278,77 +293,66 @@ function showSPPPayment(total){
     modal.classList.add("modal-show");
 
     document
-        .getElementById("confirmSPP")
-        .addEventListener("click",()=>{
+    .getElementById("confirmSPP")
+    .addEventListener("click", () => {
 
-            finishSPP(total);
+        const metode = document.querySelector(
+            'input[name="sppPayment"]:checked'
+        );
 
-        });
+        if (!metode) {
 
-}
+            alert("Pilih metode pembayaran.");
 
-function finishSPP(total) {
+            return;
 
-    const metode = document.querySelector('input[name="sppPayment"]:checked');
+        }
 
-    if (!metode) {
+        const trx = {
 
-        alert("Pilih metode pembayaran.");
-        return;
+            id: "TRX" + Date.now(),
 
-    }
+            tanggal: new Date().toLocaleString("id-ID"),
 
-    // Data transaksi
-    const trx = {
+            kategori: "SPP",
 
-        id: "TRX" + Date.now(),
+            metode: metode.value,
 
-        tanggal: new Date().toLocaleString("id-ID"),
+            nama: "Pembayaran SPP",
 
-        kategori: "SPP",
+            nominal: total,
 
-        metode: metode.value,
+            status: "Berhasil"
 
-        nama: "Pembayaran SPP",
+        };
 
-        nominal: total,
+        switch (metode.value) {
 
-        status: "Berhasil"
+            case "Virtual Account":
 
-    };
+                showVA(trx);
 
-    if (!updateDashboard(nominal)) {
+                break;
 
-    return;
+            case "QRIS":
 
-}
-if (!updateDashboard(total)) {
-    return;
-}
-    saveTransaction(trx);
-updateDashboard(total);
-    // Update tabel riwayat
-    renderHistory();
-renderPaymentChart();
-    // Reset checkbox
-    document.querySelectorAll(".billCheck").forEach(item => {
-        item.checked = false;
+                showQRIS(trx);
+
+                break;
+
+            case "Teller":
+
+                showTeller(trx);
+
+                break;
+
+        }
+
     });
 
-    // Reset total
-    document.getElementById("totalSPP").innerHTML = "Rp 0";
-
-    // Tutup modal pembayaran
-    const modal = document.getElementById("paymentModal");
-
-    modal.classList.add("hidden");
-    modal.classList.remove("modal-show");
-
-    // Tampilkan struk pembayaran
-    showReceipt(trx);
-
-   
 }
+
+
 
 function calculateSPP(){
 
