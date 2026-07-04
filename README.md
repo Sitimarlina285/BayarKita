@@ -1,3 +1,21 @@
+BayarKita adalah aplikasi pembayaran digital berbasis web yang dibangun menggunakan HTML, CSS (Tailwind CSS), dan JavaScript. Aplikasi ini mensimulasikan berbagai jenis pembayaran seperti Tagihan, SPP, dan Pulsa dengan beberapa metode pembayaran.
+
+## Dashboard
+
+<img src="img/dashboard.png" width="32%">
+
+## Payment
+
+<img src="img/payment.png" width="32%">
+
+## History
+
+<img src="img/history.png" width="32%">
+
+## Dark-mode
+
+<img src="img/dark-mode.png" width="32%">
+
 Aplikasi BayarKita menggunakan data dummy sebagai simulasi transaksi.
 
 PLN
@@ -35,3 +53,5 @@ SPP
 | 221011450017 | Siti Marlina |
 | 202310002 | Budi Santoso |
 | 202310003 | Andi Saputra |
+
+Seluruh data di atas merupakan data simulasi (dummy) yang digunakan untuk demonstrasi dan pengujian fitur aplikasi.
